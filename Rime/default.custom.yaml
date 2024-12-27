@@ -1,0 +1,11 @@
+patch:
+  schema_list:
+    - schema: rime_mint            # 薄荷拼音
+    - schema: double_pinyin_flypy  # 小鹤双拼
+    - schema: rime_mint_flypy      # 薄荷拼音-小鹤混输方案
+  switcher:
+    # 切换方案时显示的标题
+    caption:
+    # 切换方案的快捷键
+    hotkeys:
+      - Control+Tab
