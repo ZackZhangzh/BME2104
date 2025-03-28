@@ -147,7 +147,7 @@ def plot_results(original, denoised_freq, denoised_spatial, cutoff_freqs, kernel
 def main():
     # Load and preprocess image
     # Replace 'your_image.jpg' with your image path
-    image = load_and_preprocess_image("your_image.jpg")
+    image = load_and_preprocess_image("pic/your_image.jpg")
 
     # Parameters for denoising
     cutoff_freqs = [50, 100, 150]

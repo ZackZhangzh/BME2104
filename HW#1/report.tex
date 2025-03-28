@@ -1,0 +1,90 @@
+\usepackage{lmodern}
+\usepackage{
+	amsmath,
+	amsthm,
+	amssymb,
+	bm,
+	framed,
+	graphicx,
+	hyperref,
+	mathrsfs,
+	color,
+	algorithm,
+	xcolor,
+	enumitem, % 添加此行以使用 enumitem 宏包
+	fontspec, % 添加此行以使用 fontspec 宏包
+	longtable,
+	setspace,
+}
+\usepackage{subfigure}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\renewcommand{\tablename}{Table}
+\usepackage{booktabs}
+\linespread{1.5}
+
+\definecolor{shadecolor}{RGB}{211,211,211}
+\newcounter{problemname}
+
+\newenvironment{problem}{
+	\begin{shaded}
+		\stepcounter{problemname}
+		\par
+		\noindent
+		\textbf{\textsc{Problem} \arabic{problemname}. }
+		\small
+		}{
+	\end{shaded}\par
+}
+
+% --------------------------------------------------------------------------------
+
+\usepackage{listings}
+\usepackage{fontspec}
+% \setmonofont{JetBrains Mono}
+% \setmonofont{Courier New}
+\lstdefinestyle{mystyle}{
+	backgroundcolor=
+	\color[RGB]{211,211,211}
+	, % 更浅的背景色
+	basicstyle=\ttfamily\small\fontspec{Source Code Pro}, % 代码字体和大小
+	columns=flexible, % 柔性列宽
+	breaklines=true, % 自动换行
+	numbers=left, % 显示行号
+	numberstyle=\tiny
+	\color[RGB]{152,152,152}
+	, % 行号颜色：浅灰色
+	lineskip=2pt, % 调整行间距
+	xleftmargin=1.5em, % 左边距
+	framexleftmargin=1.5em, % 行号与代码框之间距离
+	rulecolor=
+	\color[RGB]{224,224,224}
+	, % 框线颜色：浅灰色
+	keywordstyle=
+	\color[RGB]{33,150,243}
+	\bfseries, % 关键字颜色：Material蓝色并加粗
+	commentstyle=
+	\color[RGB]{76,175,80}
+	\itshape, % 注释颜色：Material绿色并斜体
+	stringstyle=
+	\color[RGB]{255,87,34}
+	, % 字符串颜色：Material深橙色
+	numbersep=10pt, % 行号与代码间距
+	identifierstyle=
+	\color[RGB]{33,33,33}
+	, % 普通标识符颜色：深灰色
+	emphstyle=
+	\color[RGB]{156,39,176}
+	, % 突出显示颜色：Material紫色
+	emph={self, init, class, def}, % 自定义突出显示的标识符
+	ndkeywordstyle=
+	\color[RGB]{255,193,7}
+	, % 内置函数颜色：Material黄色
+	ndkeywords={print, range, len, int, str, float, bool}, % 内置函数列表
+	morekeywords={True, False, None}, % 更多关键字
+	tabsize=4, % Tab 宽度
+	showspaces=false, % 不显示空格
+	frame=single, % 外框样式
+	showstringspaces=false, % 不显示字符串中的空格
+	captionpos=b, % 标题位置：底部
+}
