@@ -84,8 +84,8 @@ A micro-CT imaging system’s spatial resolution was characterized with a thin t
 \subsubsection*{(1) Line Intensity Profile}
 
 Line Intensity Profile (LIP) is defined as the intensity of the image along a line, which is useful for analyzing the spatial resolution of an imaging system. The LIP can be obtained by taking a line profile through the center of the image. As a image is in fact a 2D matrix, we can take the center row of the image and plot the intensity values along that row. The LIP is typically modeled as a Gaussian function, which is a common assumption for imaging systems. The Gaussian function is given by
+\[G(x) = A \cdot \exp(-\frac{(x - \mu)^2}{2\sigma^2})+A_0\]
 
-\[G(x) = A \cdot \text{exp}\{-\frac{(x - \mu)^2}{2\sigma^2}\}+A_0\]
 
 Where \(A\) is the amplitude,\(A_0\) is the offset, \(\mu\) is the mean (center of the Gaussian), and \(\sigma\) is the standard deviation (width of the Gaussian). The parameters of the Gaussian function can be estimated using curve fitting techniques. In Python, we can use the \texttt{scipy.optimize.curve\_fit} function to fit the Gaussian function to the LIP data, which uses the least squares method to minimize the difference between the observed data and the Gaussian function.
 
@@ -152,7 +152,9 @@ Comparing the results of the fitted in (1) and (2), we can see that both LIP and
 The FFT of gaussian function is also a Gaussian function, which is why we can still use a Gaussian function to fit MTF. The Fourier transform of  Gaussian function is given by:
 
 \[
-	\operatorname {MTF} ={\mathcal {F}}\left[\operatorname {LSF} \right]=\text{exp}\left(-\frac{(y - y_0)^2}{2\sigma^2}\right)
+	\operatorname {MTF} ={\mathcal {F}}\left[\operatorname {LSF} \right]
+	= {\mathcal {F}}\left[\frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y - y_0)^2}{2\sigma^2}\right)\right]
+	=\exp\left(-2\pi^{2}\sigma^{2}f^{2}\right)
 \]
 
 Therefore, there exists a definite fitting coefficient relationship between the Gaussian fitting results of LSF and MTF, and this result is consistent with obtaining the LIP through fitting with a Gaussian function followed by Fourier transformation (as seen in the graph, both have an error within an acceptable range).
@@ -237,10 +239,7 @@ We apple the low-pass filter to the image in the frequency domain with cutoff fr
 	\includegraphics[width=1\textwidth]{./result/spatial_domain_results.png}
 \end{figure}
 
-
-
-
-for the two denoising methods, we calculate the MSE, PSNR, and SSIM relative to the original image before denoising. 
+It can be seen that, from the intuitive visual impression, the 3$\times$3 mean filter performs the best, while the 30 low-pass filter has the worst denoising effect, exhibiting obvious \textbf{artifacts}. In order to quantitatively compare,for the two denoising methods, we calculate the MSE, PSNR, and SSIM relative to the original image before denoising. 
 
 MSE (Mean Squared Error) is a measure of the average squared difference between the estimated values and the actual value. It is calculated as:
 \[
